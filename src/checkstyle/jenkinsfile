@@ -1,0 +1,11 @@
+node('jdk11-mvn3.8.4') {
+    stage('git') {
+        git 'https://github.com/nanipradeep/spring-petclinic.git'
+    }
+    stage('build') {
+        sh 'mvn clean package'
+    }
+    stage('archive') {
+        archive 'target/*.jar'
+    }
+}
